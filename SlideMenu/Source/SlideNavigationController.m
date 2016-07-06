@@ -485,6 +485,9 @@ static SlideNavigationController *singletonInstance;
 						 CGRect rect = self.view.frame;
 						 CGFloat width = self.horizontalSize;
 						 rect.origin.x = (menu == MenuLeft) ? (width - self.slideOffset) : ((width - self.slideOffset )* -1);
+                         if (menu == MenuLeft && rect.origin.x < 0) {
+                             rect.origin.x *= -1;
+                         }
 						 [self moveHorizontallyToLocation:rect.origin.x];
 					 }
 					 completion:^(BOOL finished) {
